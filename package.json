@@ -1,7 +1,7 @@
 {
-  "name": "react-native-keyboard-experience",
+  "name": "keyboard-avoid-experience",
   "version": "0.1.0",
-  "description": "Seamless keyboard avoiding view for iOS and Android",
+  "description": "Seamless and consistent React Native keyboard avoiding view for iOS and Android",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",

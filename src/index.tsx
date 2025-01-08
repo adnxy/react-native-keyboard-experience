@@ -1,1 +1,1 @@
-export { default as CustomAvoidView } from './CustomAvoidView';
+export { default as KeyboardAvoidExperience } from './KeyboardAvoidExperience';

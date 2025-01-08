@@ -12,22 +12,6 @@ const CustomKeyboardAvoidingView = ({
 }) => {
   const [keyboardHeight] = useState(new Animated.Value(0));
 
-  useEffect(() => {
-    const keyboardShowListener = Keyboard.addListener(
-      Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow',
-      onKeyboardShow
-    );
-    const keyboardHideListener = Keyboard.addListener(
-      Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide',
-      onKeyboardHide
-    );
-
-    return () => {
-      keyboardShowListener.remove();
-      keyboardHideListener.remove();
-    };
-  }, [onKeyboardShow, onKeyboardHide]);
-
   const onKeyboardShow = useCallback(
     (event: any) => {
       Animated.timing(keyboardHeight, {
@@ -46,6 +30,22 @@ const CustomKeyboardAvoidingView = ({
       useNativeDriver: false,
     }).start();
   }, [keyboardHeight]);
+
+  useEffect(() => {
+    const keyboardShowListener = Keyboard.addListener(
+      Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow',
+      onKeyboardShow
+    );
+    const keyboardHideListener = Keyboard.addListener(
+      Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide',
+      onKeyboardHide
+    );
+
+    return () => {
+      keyboardShowListener.remove();
+      keyboardHideListener.remove();
+    };
+  }, [onKeyboardShow, onKeyboardHide]);
 
   return (
     <Animated.View style={[style, { marginBottom: keyboardHeight }]}>
