@@ -1,13 +1,14 @@
+import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'react-native-keyboard-experience';
-
-const result = multiply(3, 7);
+import { CustomAvoidView } from 'react-native-keyboard-experience';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <CustomAvoidView>
+      <View style={styles.container}>
+        <Text>Hello</Text>
+      </View>
+    </CustomAvoidView>
   );
 }
 
