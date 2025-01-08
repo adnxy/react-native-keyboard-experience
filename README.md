@@ -1,6 +1,6 @@
-# react-native-keyboard-experience
+# keyboard-experience
 
-Seamless and animated keyboard avoiding view for iOS and Android.
+[React Native] Seamless and animated keyboard avoiding view for iOS and Android.
 
 ## DEMO
 
