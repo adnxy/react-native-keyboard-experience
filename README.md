@@ -2,6 +2,8 @@
 
 [REACT NATIVE] Seamless and animated keyboard avoiding view for iOS and Android.
 
+ `Works consistently with ScrollView, FlatList, SectionList, and any other React Native components.`
+
 ## DEMO
 
 [Demo Video](https://www.youtube.com/shorts/E59--rHLOHA?feature=share)
@@ -17,8 +19,6 @@ npm install react-native-keyboard-experience
 To use the `CustomKeyboardAvoidingView`, import it into your component and wrap your content with it. You can customize the keyboard padding if needed.
 
 ```typescript
-import React from 'react';
-import { View, Text, TextInput } from 'react-native';
 import CustomKeyboardAvoidingView from 'react-native-keyboard-experience';
 
 const App = () => {
@@ -36,7 +36,7 @@ export default App;
 
 - `children`: The content to be displayed inside the keyboard avoiding view (required).
 - `style`: Custom styles for the container (optional).
-- `keyboardPadding`: Additional padding to be applied when the keyboard is shown (default is `-50`).
+- `keyboardPadding`: Additional padding to be applied when the keyboard is shown (default is `-50 ios` and `-250 android`).
 - `duration`: The duration of the animation (default is `250`).
 
 ## Contributing

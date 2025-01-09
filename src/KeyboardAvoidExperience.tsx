@@ -4,32 +4,13 @@ import { Animated, Keyboard, Platform } from 'react-native';
 const CustomKeyboardAvoidingView = ({
   children,
   style,
-  keyboardPadding = -50,
+  keyboardPadding = Platform.OS === 'ios' ? -50 : -250,
 }: {
   children: React.ReactNode;
   style?: object;
   keyboardPadding?: number;
 }) => {
   const [keyboardHeight] = useState(new Animated.Value(0));
-
-  const onKeyboardShow = useCallback(
-    (event: any) => {
-      Animated.timing(keyboardHeight, {
-        toValue: event.endCoordinates.height + keyboardPadding,
-        duration: event.duration || 250,
-        useNativeDriver: false,
-      }).start();
-    },
-    [keyboardHeight, keyboardPadding]
-  );
-
-  const onKeyboardHide = useCallback(() => {
-    Animated.timing(keyboardHeight, {
-      toValue: 0,
-      duration: 250,
-      useNativeDriver: false,
-    }).start();
-  }, [keyboardHeight]);
 
   useEffect(() => {
     const keyboardShowListener = Keyboard.addListener(
@@ -45,7 +26,33 @@ const CustomKeyboardAvoidingView = ({
       keyboardShowListener.remove();
       keyboardHideListener.remove();
     };
-  }, [onKeyboardShow, onKeyboardHide]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onKeyboardShow = useCallback(
+    (event: any) => {
+      const isAndroid = Platform.OS === 'android';
+      const heightAdjustment = isAndroid
+        ? event.endCoordinates.height + keyboardPadding + 20
+        : event.endCoordinates.height + keyboardPadding;
+      Animated.timing(keyboardHeight, {
+        toValue: heightAdjustment,
+        duration: event.duration || 250,
+        useNativeDriver: false,
+      }).start();
+    },
+    [keyboardHeight, keyboardPadding]
+  );
+
+  const onKeyboardHide = useCallback(() => {
+    const isAndroid = Platform.OS === 'android';
+    const resetValue = isAndroid ? 20 : 0;
+    Animated.timing(keyboardHeight, {
+      toValue: resetValue,
+      duration: 250,
+      useNativeDriver: false,
+    }).start();
+  }, [keyboardHeight]);
 
   return (
     <Animated.View style={[style, { marginBottom: keyboardHeight }]}>
