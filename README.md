@@ -1,6 +1,6 @@
-# keyboard-experience
+# keyboard-avoid-experience
 
-[REACT NATIVE] Seamless and animated keyboard avoiding view for iOS and Android.
+React Native Seamless and animated keyboard avoiding view for iOS and Android.
 
  `Works consistently with ScrollView, FlatList, SectionList, and any other React Native components.`
 
