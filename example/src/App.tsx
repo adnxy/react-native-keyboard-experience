@@ -1,14 +1,14 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { CustomAvoidView } from 'react-native-keyboard-experience';
+import CustomKeyboardAvoidingView from '../../src/KeyboardAvoidExperience';
 
 export default function App() {
   return (
-    <CustomAvoidView>
+    <CustomKeyboardAvoidingView>
       <View style={styles.container}>
         <Text>Hello</Text>
       </View>
-    </CustomAvoidView>
+    </CustomKeyboardAvoidingView>
   );
 }
 
